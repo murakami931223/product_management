@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+.container{
+  margin-bottom: 60px;
+}
+
+.list_title{
+  font-size: 2em;
+  text-align: left;
+  margin-left: 10%;
+}
+
+.search_wrap{
+  width: 80%;
+  margin: 3em auto;
+  text-align: left;
+}
+
+.search_content{
+  text-align: left;
+  width: 40%;
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  padding: 5px 0 5px 10px;
+  margin-right: 2.5em;
+}
+
+.search_btn{
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+select option:first-child {
+  color: #c0c0c0;
+}
+
+.list_table{
+  display: table;
+  width: 80%;
+  margin: 0 auto;
+  table-layout: fixed;
+  border: 1px solid #000;
+  border-collapse: collapse;
+}
+
+.list_table th{
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 8px;
+}
+
+.list_table td{
+  border-top: #000 1px solid;
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 8px;
+}
+
+.list_tr:nth-child(odd){
+  background-color: #d3d3d3;
+}
+
+.new_item_btn{
+  border-radius: 5px;
+  margin: 0;
+  padding: 0.25rem 1rem;
+  background-color: #ff7f50;
+  border: 1px solid #d2691e;
+}
+
+.detail_btn{
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+  background-color: #00ffff;
+  border: 1px solid #20b2aa;
+}
+
+.delete_area{
+  display: inline;
+}
+
+.delete_btn{
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+  background-color: #ff0000;
+  border: 1px solid #dc143c;
+  color: #fff;
+}
+
+.pagination{
+  margin-top: 3em;
+}
+
+.pagination li{
+  display: inline-block;
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  padding: 0.25rem 0.5rem;
+}

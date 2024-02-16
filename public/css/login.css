@@ -1,0 +1,53 @@
+@charset "utf-8";
+
+.nav_item{
+  text-align: right;
+  margin: 12px 24px 0 0;
+}
+
+.card_header{
+  margin-top: 36px;
+}
+
+.container{
+  text-align: center;
+  margin: auto;
+}
+
+.card_header{
+  font-size: 2em;
+}
+
+input[type="password"],
+input[type="email"]{
+  height: 30px;
+  width: 35%;
+  border: 1px solid #696969;
+  border-radius: 5px;
+  text-align: left;
+  padding: 10px 0 10px 20px;
+}
+
+.invalid_feedback{
+  color: red;
+}
+
+.col_md_6{
+  margin-top: 50px;
+}
+
+.btn_primary{
+  border-radius: 25px;
+  margin: 50px 30px 0 30px;
+  padding: 5px 30px 5px 30px;
+}
+
+.btn1{
+  background-color: #ff7f50;
+  border: 1px solid #d2691e;
+}
+
+.btn2{
+  background-color: #00ffff;
+  border: 1px solid #40e0d0;
+}

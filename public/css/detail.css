@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+.detail_title{
+  font-size: 2em;
+  text-align: left;
+}
+
+.detail_wrap{
+  border: #808080 2px solid;
+  border-radius: 5px;
+  width: 60%;
+  padding: 36px;
+  margin-top: 24px;
+}
+
+.detail_tr{
+  display: flex;
+}
+
+.detail_th{
+  display: inline-block;
+  width: 150px;
+  margin-top: 36px;
+}
+
+.detail_td{
+  display: inline-block;
+  width: 300px;
+  margin-top: 36px;
+}

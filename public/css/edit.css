@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+.edit_title{
+  font-size: 2em;
+  text-align: left;
+}
+
+.id_title{
+  display: inline-block;
+  width: 100px;
+}
