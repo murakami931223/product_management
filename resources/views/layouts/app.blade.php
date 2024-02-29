@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://unpkg.com/destyle.css@3.0.2/destyle.min.css">
     <link rel="stylesheet" href="{{ asset('css/login.css') }}"> 
     <link rel="stylesheet" href="{{ asset('css/list.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/itemregist.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/productregist.css') }}">
     <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
     <link rel="stylesheet" href="{{ asset('css/edit.css') }}">
 

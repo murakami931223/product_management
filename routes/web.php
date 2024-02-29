@@ -21,21 +21,21 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/list', [App\Http\Controllers\ItemController::class, 'showList'])->name('list');
+Route::get('/list', [App\Http\Controllers\ProductController::class, 'showList'])->name('list');
 
-Route::get('/itemregist',[App\Http\Controllers\ItemController::class, 'showItemregistForm'])->name('itemregist');
+Route::get('/productregist',[App\Http\Controllers\ProductController::class, 'showProductregistForm'])->name('productregist');
 
 //商品登録機能用
-Route::post('/itemregist',[App\Http\Controllers\ItemController::class, 'itemregistSubmit'])->name('regist.submit');
+Route::post('/productregist',[App\Http\Controllers\ProductController::class, 'productregistSubmit'])->name('productregist.submit');
 
 // 商品の削除
-Route::DELETE('/items/{item}', [App\Http\Controllers\ItemController::class, 'delete'])->name('item.delete');
+Route::DELETE('/products/{product}', [App\Http\Controllers\ProductController::class, 'delete'])->name('product.delete');
 
 //商品詳細画面表示
-Route::get('/detail/{id}', [App\Http\Controllers\ItemController::class, 'showDetail'])->name('detail');
+Route::get('/detail/{id}', [App\Http\Controllers\ProductController::class, 'showDetail'])->name('detail');
 
 //商品編集画面表示
-Route::get('/edit/{id}', [App\Http\Controllers\ItemController::class, 'showEdit'])->name('edit');
+Route::get('/edit/{id}', [App\Http\Controllers\ProductController::class, 'showEdit'])->name('edit');
 
 //商品編集
-Route::post('/edit/{id}',[App\Http\Controllers\ItemController::class, 'update'])->name('edit.submit');
+Route::post('/edit/{id}',[App\Http\Controllers\ProductController::class, 'update'])->name('edit.submit');

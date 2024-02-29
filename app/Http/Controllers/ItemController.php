@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Item;
-use App\Http\Requests\ItemregistRequest;
+use App\Http\Requests\ProductregistRequest;
 use Illuminate\Support\Facades\DB;
 
 class ItemController extends Controller

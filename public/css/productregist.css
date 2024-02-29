@@ -8,7 +8,7 @@
   margin-top: 24px;
 }
 
-.itemregist_title{
+.productregist_title{
   font-size: 2em;
   text-align: left;
 }
@@ -27,9 +27,9 @@
   width: 100px;
 }
 
-#items_name,
+#product_name,
 #price,
-#items_stock{
+#stock{
   height: 30px;
   width: 65%;
   border: 1px solid #a9a9a9;
@@ -43,7 +43,7 @@ input[type="file"]{
   padding: 0;
 }
 
-#maker_name{
+#company_id{
   -moz-appearance: menulist;
   -webkit-appearance: menulist;
   appearance: menulist;
@@ -56,7 +56,7 @@ input[type="file"]{
   position: relative;
 }
 
-#maker_name::-ms-expand {
+#company_id::-ms-expand {
   display: block;
 }
 
