@@ -45,7 +45,7 @@
                         <form class="delete_area" action="{{ route('product.delete', ['product' => $product->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                            <button type="submit" class="delete_btn">削除</button>
+                            <button type="submit" class="delete_btn" onclick="return confirmDelete();">削除</button>
                         </form>
                         @if(session('success'))
                         <div class="alert alert-success">

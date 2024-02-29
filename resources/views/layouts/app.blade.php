@@ -15,6 +15,7 @@
 
     <!-- Scripts -->
     <!-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) -->
+    <script src="{{ asset('js/dialog.js') }}"></script>
 
     <!-- Style --> 
     <link rel="stylesheet" href="https://unpkg.com/destyle.css@3.0.2/destyle.min.css">
