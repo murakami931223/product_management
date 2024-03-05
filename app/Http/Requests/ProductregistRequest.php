@@ -54,5 +54,14 @@ public function messages() {
     ];
 }
 
+public function attributes() {
+        return [
+            'product_name' => '商品名',
+            'company_id' => 'メーカー名',
+            'price' => '価格',
+            'stock' => '在庫数',
+        ];
+    }
+
 
 }

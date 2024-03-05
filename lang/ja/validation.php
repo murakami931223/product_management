@@ -147,12 +147,9 @@ return [
     */
     'attributes' => [
         'password' => 'パスワード',
-        'name' => '商品名',
-        'maker' => 'メーカー名',
+        'product_name' => '商品名',
+        'company_id' => 'メーカー名',
         'price' => '価格',
         'stock' => '在庫数',
-        'comment' => 'コメント',
-        'file' => 'ファイル',
-
     ],
 ];

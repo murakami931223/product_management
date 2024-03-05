@@ -14,7 +14,7 @@ class ProductController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     //商品一覧画面表示
     public function showList(Request $request) {
         $keyword = $request->input('keyword');
@@ -23,23 +23,23 @@ class ProductController extends Controller
         // companiesテーブルからデータを取得
         $companies = Company::all();
     
-        // Productモデルのインスタンスを生成
-        $model = new Product();
-
         // 商品リストを取得
-        if (!empty($keyword) && !empty($company)) {
-            // $keywordも$companyも指定されている場合
-            $products = $model->getList($keyword, $company);
-        } elseif (!empty($keyword)) {
-            // $keywordのみ指定されている場合
-            $products = $model->getList($keyword);
-        } elseif (!empty($company)) {
-            // $companyのみ指定されている場合
-            $products = $model->getList('',$company);
-        } else {
-            // どちらも指定されていない場合は全ての商品を取得
-            $products = Product::paginate(10);
+        $query = Product::query();
+
+        // キーワードからの検索
+        if (!is_null($keyword)) {
+        $query->where(function($q) use ($keyword) {
+            $q->where('product_name', 'LIKE', "%{$keyword}%")
+                ->orWhere('price', 'LIKE', "%{$keyword}%");
+        });
         }
+
+        // 選択肢からの検索
+        if (!is_null($company)) {
+        $query->where('company_id', $company);
+        }
+
+        $products = $query->paginate(10);
 
         // セッションに検索条件を保存
         $request->session()->put('search', [
@@ -66,14 +66,13 @@ class ProductController extends Controller
 
     //商品登録処理
     public function productregistSubmit(productregistRequest $request) {
-
         // トランザクション開始
         DB::beginTransaction();
     
         try {
             // 登録処理呼び出し
-            $model = new Product();
-            $model->registProduct($request);
+            $product = new Product();
+            $product->registProduct($request);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
@@ -86,8 +85,18 @@ class ProductController extends Controller
 
     //削除処理
     public function delete(Product $product){
-    $product->delete();
-    return back();
+        // トランザクション開始
+        DB::beginTransaction();
+    
+        try {
+            // 削除処理呼び出し
+            $product->delete();
+            DB::commit();
+        } catch (\Exception $e) {
+            DB::rollBack();
+        }
+        
+        return back();
     }
 
     //商品詳細画面表示
@@ -128,14 +137,14 @@ class ProductController extends Controller
     
         try {
             // 更新処理呼び出し
-            $model = new Product();
-            $model->editProduct($request,$id);
+            $product = new Product();
+            $product->editProduct($request,$id);
             DB::commit();
         } catch (\Exception $e) {
             DB::rollback();
             return back();
         }
-
+        
         return redirect(route('edit', ['id' => $id]));
     }
 }

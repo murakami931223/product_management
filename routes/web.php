@@ -19,8 +19,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('/list', [App\Http\Controllers\ProductController::class, 'showList'])->name('list');
 
 Route::get('/productregist',[App\Http\Controllers\ProductController::class, 'showProductregistForm'])->name('productregist');
