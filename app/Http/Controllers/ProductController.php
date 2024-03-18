@@ -19,6 +19,10 @@ class ProductController extends Controller
     public function showList(Request $request) {
         $keyword = $request->input('keyword');
         $company = $request->input('company_id');
+        $lower_price = $request->input('lower_price');
+        $upper_price = $request->input('upper_price');
+        $lower_stock = $request->input('lower_stock');
+        $upper_stock = $request->input('upper_stock');
 
         // companiesテーブルからデータを取得
         $companies = Company::all();
@@ -28,10 +32,7 @@ class ProductController extends Controller
 
         // キーワードからの検索
         if (!is_null($keyword)) {
-        $query->where(function($q) use ($keyword) {
-            $q->where('product_name', 'LIKE', "%{$keyword}%")
-                ->orWhere('price', 'LIKE', "%{$keyword}%");
-        });
+        $query->where('product_name', 'LIKE', "%{$keyword}%");
         }
 
         // 選択肢からの検索
@@ -39,12 +40,36 @@ class ProductController extends Controller
         $query->where('company_id', $company);
         }
 
+        //下限価格からの検索
+        if (!is_null($lower_price)) {
+            $query->where('price','>=', $lower_price);
+            }
+
+        // 上限価格からの検索
+        if (!is_null($upper_price)) {
+            $query->where('price', '<=', $upper_price);
+            }
+
+        //下限在庫からの検索
+        if (!is_null($lower_stock)) {
+            $query->where('stock','>=', $lower_stock);
+            }
+
+        // 上限在庫からの検索
+        if (!is_null($upper_stock)) {
+            $query->where('stock', '<=', $upper_stock);
+            }
+
         $products = $query->paginate(10);
 
         // セッションに検索条件を保存
         $request->session()->put('search', [
             'keyword' => $keyword,
             'company_id' => $company,
+            'lower_price' => $lower_price, 
+            'upper_price' => $upper_price,
+            'lower_stock' => $lower_stock, 
+            'upper_stock' => $upper_stock,
             'page' => $products->currentPage(),
         ]);
 
@@ -84,7 +109,7 @@ class ProductController extends Controller
     }
 
     //削除処理
-    public function delete(Product $product){
+    public function delete(Request $request,Product $product){
         // トランザクション開始
         DB::beginTransaction();
     

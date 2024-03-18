@@ -24,6 +24,10 @@ class Product extends Model
             return $this->belongsTo(Company::class, 'company_id', 'id');
         }
 
+        public function sale() {
+            return $this->hasMany(Sale::class, 'product_id', 'id');
+        }
+
         
         // 登録処理
         public function registProduct($request) {

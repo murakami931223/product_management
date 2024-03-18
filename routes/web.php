@@ -37,3 +37,4 @@ Route::get('/edit/{id}', [App\Http\Controllers\ProductController::class, 'showEd
 
 //商品編集
 Route::post('/edit/{id}',[App\Http\Controllers\ProductController::class, 'update'])->name('edit.submit');
+
