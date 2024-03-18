@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Sale;
 use App\Models\Product;
 
-class SaleController extends Controller
+class SalesController extends Controller
 {
  // 商品購入処理
     public function purchase(Request $request)
