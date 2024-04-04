@@ -27,7 +27,7 @@ Route::get('/productregist',[App\Http\Controllers\ProductController::class, 'sho
 Route::post('/productregist',[App\Http\Controllers\ProductController::class, 'productregistSubmit'])->name('productregist.submit');
 
 // 商品の削除
-Route::DELETE('/products/{product}', [App\Http\Controllers\ProductController::class, 'delete'])->name('product.delete');
+Route::post('/products/{deleteID}', [App\Http\Controllers\ProductController::class, 'delete'])->name('product.delete');
 
 //商品詳細画面表示
 Route::get('/detail/{id}', [App\Http\Controllers\ProductController::class, 'showDetail'])->name('detail');

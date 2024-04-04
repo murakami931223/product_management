@@ -42,6 +42,7 @@
 
 
     <!-- 商品一覧ここから -->
+    <div id="table_wrap">
         <table class="list_table" id="list_table">
             <thead>
                 <tr>
@@ -54,7 +55,8 @@
                     <th><button type="button" class="new_product_btn" onclick="location.href='{{ route('productregist') }}'">新規登録</button></th>
                 </tr>
             </thead>
-            <tbody>
+
+            <tbody id="list_tbody">
             @foreach ($products as $product)
                 <tr class="list_tr">
                     <td>{{ $product->id }}</td>
@@ -64,23 +66,19 @@
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->company->company_name }}</td>
                     <td>
-                        <button type="button" class="detail_btn" onclick="location.href='{{ route('detail', ['id' => $product->id, 'search' => session('search')]) }}'">詳細</button>
-                        <form class="delete_area" action="{{ route('product.delete', ['product' => $product->id]) }}" method="POST">
+                        <button  type="button" class="detail_btn" onclick="location.href='{{ route('detail', ['id' => $product->id, 'search' => session('search')]) }}'">詳細</button>
+                        <form class="delete_area" action="{{ route('product.delete', ['deleteID' => $product->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                            <button data-product_id="{{$product->id}}" type="submit" class="delete_btn">削除</button>
+                            <button data-product_id="{{$product->id}}" type="button" class="delete_btn">削除</button>
                         </form>
-                        @if(session('success'))
-                        <div class="alert alert-success">
-
-                        </div>
-                        @endif
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
         {{ $products->appends(request()->query())->links() }}
+    </div>
     </div>
 </div>
 @endsection

@@ -75,8 +75,9 @@ class ProductController extends Controller
 
         // セッションに保存された検索条件を取得し、ビューに渡す
         $search = $request->session()->get('search');
-    
-        return view('list', compact('products', 'companies', 'keyword', 'company', 'search'));
+
+        // ビューを返す
+        return view('list', compact('products', 'companies', 'search'));
     }
 
     //商品登録画面表示
@@ -91,10 +92,10 @@ class ProductController extends Controller
 
     //商品登録処理
     public function productregistSubmit(productregistRequest $request) {
-        // トランザクション開始
-        DB::beginTransaction();
-    
+        
         try {
+            // トランザクション開始
+            DB::beginTransaction();
             // 登録処理呼び出し
             $product = new Product();
             $product->registProduct($request);
@@ -109,11 +110,12 @@ class ProductController extends Controller
     }
 
     //削除処理
-    public function delete(Request $request,Product $product){
-        // トランザクション開始
-        DB::beginTransaction();
-    
+    public function delete(Request $request,$deleteID){
+        $product = Product::findOrFail($deleteID);
+        
         try {
+            // トランザクション開始
+            DB::beginTransaction();
             // 削除処理呼び出し
             $product->delete();
             DB::commit();
@@ -121,7 +123,7 @@ class ProductController extends Controller
             DB::rollBack();
         }
         
-        return back();
+        return response()->json(['message' => '削除が完了しました']);
     }
 
     //商品詳細画面表示

@@ -96,7 +96,7 @@ select option:first-child {
 }
 
 .delete_area{
-  display: inline;
+  display: inline-block;
 }
 
 .delete_btn{

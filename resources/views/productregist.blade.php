@@ -60,7 +60,7 @@
                 </div>
 
                 <button type="submit" class="btn1 btn_primary">新規登録</button>
-                <button type="button" class="btn2 btn_primary" onclick="location.href='{{ route('list') }}?keyword={{ $search['keyword'] }}&company_id={{ $search['company_id'] }}&page={{ $search['page'] ?? 1 }}'">戻る</button>
+                <button type="button" class="btn2 btn_primary" onclick="location.href='{{ route('list') }}?{{ http_build_query($search) }}'">戻る</button>
 
             </form>
         </div>
