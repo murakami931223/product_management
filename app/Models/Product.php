@@ -28,6 +28,45 @@ class Product extends Model
             return $this->hasMany(Sale::class, 'product_id', 'id');
         }
 
+        //検索処理
+        public function searchProduct($keyword, $company, $lower_price, $upper_price, $lower_stock, $upper_stock){
+        // 商品リストを取得
+        $query = Product::query();
+
+        // キーワードからの検索
+        if (!is_null($keyword)) {
+        $query->where('product_name', 'LIKE', "%{$keyword}%");
+        }
+
+        // 選択肢からの検索
+        if (!is_null($company)) {
+        $query->where('company_id', $company);
+        }
+
+        //下限価格からの検索
+        if (!is_null($lower_price)) {
+            $query->where('price','>=', $lower_price);
+            }
+
+        // 上限価格からの検索
+        if (!is_null($upper_price)) {
+            $query->where('price', '<=', $upper_price);
+            }
+
+        //下限在庫からの検索
+        if (!is_null($lower_stock)) {
+            $query->where('stock','>=', $lower_stock);
+            }
+
+        // 上限在庫からの検索
+        if (!is_null($upper_stock)) {
+            $query->where('stock', '<=', $upper_stock);
+            }
+
+            return $query->paginate(10);
+
+        }
+
         
         // 登録処理
         public function registProduct($request) {
